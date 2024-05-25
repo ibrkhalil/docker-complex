@@ -16,3 +16,10 @@ after_success:
   - docker build -t vampirekiddo/multi-server ./server
   - docker build -t vampirekiddo/multi-nginx ./nginx
   - docker build -t vampirekiddo/multi-worker ./worker
+# Log in to docker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+# Take the output of the build of the images and push them to Docker Hub
+  - docker push vampirekiddo/multi-nginx
+  - docker push vampirekiddo/multi-client
+  - docker push vampirekiddo/multi-server
+  - docker push vampirekiddo/multi-worker
