@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: stepehengrider/multi-server
+        image: stephengrider/multi-server
         resources:
           limits:
             memory: "128Mi"
@@ -34,8 +34,8 @@ spec:
           value: "5432"
         - name: PGDATABASE
           value: postgres
-        - name: PGPASSWORD
+        - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
              name: pgpassword
-             key: PGPASSWORD
+             key: POSTGRES_PASSWORD
